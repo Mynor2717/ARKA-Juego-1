@@ -45,15 +45,18 @@ class Game extends Phaser.Scene {
 
         //coliciones 
         this.physics.add.collider(this.pala, this.bola);
+        this.physics.add.collider(this.ladrillos, this.bola, (ladrillos, bola) =>{
+            bola.disableBody(true, true);
+        } );
     }
 
     update() {
 
         if (this.controles.right.isDown) {
-            this.pala.setVelocityX(200);
+            this.pala.setVelocityX(350);
 
         } else if (this.controles.left.isDown) {
-            this.pala.setVelocityX(-200);
+            this.pala.setVelocityX(-350);
         } else {
             this.pala.setVelocityX(0);
         }
